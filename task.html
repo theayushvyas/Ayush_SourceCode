@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MARQUEE EQUITY TEST</title>
+   <input type="button" onclick="petget()" value="PET/GET  "></button>
+   </br><input type="button" onclick="petpost()" value="PET/POST"></button>
+  </br><input type="button" onclick="custget()" value="CUST/GET"></button>
+</head>
+<body></br>
+ </br> Request :</br>
+</br><div id=GP1 class="div1">
+</div></br>
+<div id=GP2>
+</br></div></br>
+<div id=GP3>
+</div></br>
+</br>Response:</br>
+</br>
+</br><div id=GP4>
+</div></br>
+<div id=GP5>
+</div></br>
+<div id=GP6>
+</div>
+ 
+ <script type="text/javascript">
+
+  	function petget() {
+  fetch('https://raw.githubusercontent.com/theayushvyas/MajorProject/master/test.json')  
+  .then(function(resp) { return resp.json() }) // Convert data to json
+  .then(function(data) {
+    
+    var getpet =  data.apiRoutes["/pet"].GET.description;
+    var getpet1 = data.apiRoutes["/pet"].GET.request.query.id;
+   // var getpet2 = data.apiRoutes["/pet"].GET.request.query.id.type;
+    var getpet3 = data.apiRoutes["/pet"].GET.response.data.pet;
+    //var getpet4 = data.apiRoutes["/pet"].GET.response.data.pet.type;
+    //var getpet5 = data.apiRoutes["/pet"].GET.response.data.pet.name;
+
+    document.getElementById('GP1').innerHTML = JSON.stringify(getpet);
+    document.getElementById('GP3').innerHTML = JSON.stringify(getpet1);
+    document.getElementById('GP4').innerHTML = JSON.stringify(getpet3);;
+    document.getElementById('GP2').innerHTML = "";
+    document.getElementById('GP5').innerHTML = "";
+    document.getElementById('GP6').innerHTML = "";   
+    console.log(getpet);
+  })
+  .catch(function() {
+    // catch any errors
+  });
+}
+ 	function petpost() {
+  fetch('https://raw.githubusercontent.com/theayushvyas/MajorProject/master/test.json')  
+  .then(function(resp) { return resp.json() }) // Convert data to json
+  .then(function(data) {
+    var postpet =  data.apiRoutes["/pet"].POST.description;
+    var postpet1 = data.apiRoutes["/pet"].POST.request.body;
+    //var postpet2 = data.apiRoutes["/pet"].POST.request.body.pet.name;
+    var postpet3 = data.apiRoutes["/pet"].POST.response.data;
+
+    document.getElementById('GP1').innerHTML = JSON.stringify(postpet);
+    document.getElementById('GP3').innerHTML = JSON.stringify(postpet1);
+    document.getElementById('GP4').innerHTML = JSON.stringify(postpet3);
+    document.getElementById('GP2').innerHTML = "";
+    document.getElementById('GP5').innerHTML = "";
+    document.getElementById('GP6').innerHTML = "";
+  })
+  .catch(function() {
+    // catch any errors
+  });
+}
+
+  function custget() {
+  fetch('https://raw.githubusercontent.com/theayushvyas/MajorProject/master/test.json')  
+  .then(function(resp) { return resp.json() }) // Convert data to json
+  .then(function(data) {
+    var postpet =  data.apiRoutes["/customers"].GET.description;
+    var postpet1 = data.apiRoutes["/customers"].GET.response.data.customers[0];
+    var postpet2 = data.apiRoutes["/customers"].GET.response.data.customers[1];
+   // var postpet3 = data.apiRoutes["/customers"].GET.response.data.customers[1].id;
+   // var postpet4 = data.apiRoutes["/customers"].GET.response.data.customers[1].name;
+  // console.log(JSON.stringfy(postpet)); 
+
+    document.getElementById('GP1').innerHTML = JSON.stringify(postpet);
+    document.getElementById('GP4').innerHTML = JSON.stringify(postpet1);
+    document.getElementById('GP6').innerHTML = JSON.stringify(postpet2);
+    document.getElementById('GP2').innerHTML = "";
+    document.getElementById('GP3').innerHTML = "";
+    document.getElementById('GP').innerHTML = "";
+   
+    
+  })
+  .catch(function() {
+    // catch any errors
+  });
+}
+</script>
+<style type="text/css">
+  .div1
+  {
+    letter-spacing: 50%;
+  }
+</style>
+   
+</body>
+</html>
