@@ -33,10 +33,8 @@
     
     var getpet =  data.apiRoutes["/pet"].GET.description;
     var getpet1 = data.apiRoutes["/pet"].GET.request.query.id;
-   // var getpet2 = data.apiRoutes["/pet"].GET.request.query.id.type;
     var getpet3 = data.apiRoutes["/pet"].GET.response.data.pet;
-    //var getpet4 = data.apiRoutes["/pet"].GET.response.data.pet.type;
-    //var getpet5 = data.apiRoutes["/pet"].GET.response.data.pet.name;
+    
 
     document.getElementById('GP1').innerHTML = JSON.stringify(getpet);
     document.getElementById('GP3').innerHTML = JSON.stringify(getpet1);
@@ -56,7 +54,6 @@
   .then(function(data) {
     var postpet =  data.apiRoutes["/pet"].POST.description;
     var postpet1 = data.apiRoutes["/pet"].POST.request.body;
-    //var postpet2 = data.apiRoutes["/pet"].POST.request.body.pet.name;
     var postpet3 = data.apiRoutes["/pet"].POST.response.data;
 
     document.getElementById('GP1').innerHTML = JSON.stringify(postpet);
@@ -78,16 +75,14 @@
     var postpet =  data.apiRoutes["/customers"].GET.description;
     var postpet1 = data.apiRoutes["/customers"].GET.response.data.customers[0];
     var postpet2 = data.apiRoutes["/customers"].GET.response.data.customers[1];
-   // var postpet3 = data.apiRoutes["/customers"].GET.response.data.customers[1].id;
-   // var postpet4 = data.apiRoutes["/customers"].GET.response.data.customers[1].name;
-  // console.log(JSON.stringfy(postpet)); 
+ 
 
     document.getElementById('GP1').innerHTML = JSON.stringify(postpet);
     document.getElementById('GP4').innerHTML = JSON.stringify(postpet1);
     document.getElementById('GP6').innerHTML = JSON.stringify(postpet2);
     document.getElementById('GP2').innerHTML = "";
     document.getElementById('GP3').innerHTML = "";
-    document.getElementById('GP').innerHTML = "";
+    document.getElementById('GP5').innerHTML = "";
    
     
   })
