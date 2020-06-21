@@ -7,26 +7,28 @@
    </br><input type="button" onclick="petpost()" value="PET/POST"></button>
   </br><input type="button" onclick="custget()" value="CUST/GET"></button>
 </head>
-<body></br>
+<body></br><form class="a">
  </br> Request :</br>
-</br><div id=GP1 class="div1">
+</br>Description:<div id=GP1 class="div1">
 </div></br>
 <div id=GP2>
 </br></div></br>
 <div id=GP3>
 </div></br>
+</form>
+<form class="b">
 </br>Response:</br>
-</br>
-</br><div id=GP4>
-</div></br>
-<div id=GP5>
+
+</br>Code:<div id=GP4>
+</div>
+</br><div id=GP5>
 </div></br>
 <div id=GP6>
-</div>
+</div></form>
  
  <script type="text/javascript">
 
-  	function petget() {
+    function petget() {
   fetch('https://raw.githubusercontent.com/theayushvyas/MajorProject/master/test.json')  
   .then(function(resp) { return resp.json() }) // Convert data to json
   .then(function(data) {
@@ -34,13 +36,14 @@
     var getpet =  data.apiRoutes["/pet"].GET.description;
     var getpet1 = data.apiRoutes["/pet"].GET.request.query.id;
     var getpet3 = data.apiRoutes["/pet"].GET.response.data.pet;
+    var getpet4 = data.apiRoutes["/pet"].GET.response.code;
     
 
     document.getElementById('GP1').innerHTML = JSON.stringify(getpet);
     document.getElementById('GP3').innerHTML = JSON.stringify(getpet1);
-    document.getElementById('GP4').innerHTML = JSON.stringify(getpet3);;
+    document.getElementById('GP5').innerHTML = JSON.stringify(getpet3);;
+    document.getElementById('GP4').innerHTML = JSON.stringify(getpet4);
     document.getElementById('GP2').innerHTML = "";
-    document.getElementById('GP5').innerHTML = "";
     document.getElementById('GP6').innerHTML = "";   
     console.log(getpet);
   })
@@ -48,19 +51,20 @@
     // catch any errors
   });
 }
- 	function petpost() {
+  function petpost() {
   fetch('https://raw.githubusercontent.com/theayushvyas/MajorProject/master/test.json')  
   .then(function(resp) { return resp.json() }) // Convert data to json
   .then(function(data) {
     var postpet =  data.apiRoutes["/pet"].POST.description;
     var postpet1 = data.apiRoutes["/pet"].POST.request.body;
     var postpet3 = data.apiRoutes["/pet"].POST.response.data;
+    var postpet4 = data.apiRoutes["/pet"].POST.response.code;
 
     document.getElementById('GP1').innerHTML = JSON.stringify(postpet);
     document.getElementById('GP3').innerHTML = JSON.stringify(postpet1);
-    document.getElementById('GP4').innerHTML = JSON.stringify(postpet3);
+    document.getElementById('GP5').innerHTML = JSON.stringify(postpet3);
+    document.getElementById('GP4').innerHTML = JSON.stringify(postpet4);
     document.getElementById('GP2').innerHTML = "";
-    document.getElementById('GP5').innerHTML = "";
     document.getElementById('GP6').innerHTML = "";
   })
   .catch(function() {
@@ -73,16 +77,17 @@
   .then(function(resp) { return resp.json() }) // Convert data to json
   .then(function(data) {
     var postpet =  data.apiRoutes["/customers"].GET.description;
-    var postpet1 = data.apiRoutes["/customers"].GET.response.data.customers[0];
-    var postpet2 = data.apiRoutes["/customers"].GET.response.data.customers[1];
+     var postpet1 = data.apiRoutes["/customers"].GET.response.code;
+    var postpet2 = data.apiRoutes["/customers"].GET.response.data.customers[0];
+    var postpet3 = data.apiRoutes["/customers"].GET.response.data.customers[1];
  
 
     document.getElementById('GP1').innerHTML = JSON.stringify(postpet);
+    document.getElementById('GP5').innerHTML = JSON.stringify(postpet2);
+    document.getElementById('GP6').innerHTML = JSON.stringify(postpet3);
     document.getElementById('GP4').innerHTML = JSON.stringify(postpet1);
-    document.getElementById('GP6').innerHTML = JSON.stringify(postpet2);
     document.getElementById('GP2').innerHTML = "";
     document.getElementById('GP3').innerHTML = "";
-    document.getElementById('GP5').innerHTML = "";
    
     
   })
@@ -92,10 +97,23 @@
 }
 </script>
 <style type="text/css">
-  .div1
+  .a
   {
-    letter-spacing: 50%;
+   margin-top: 10%;
+    margin-left: 40%;
+    margin-right: 20%;
+   text-align: center;
+    background: lightblue;
   }
+  .b
+  {
+    
+    margin-left: 40%;
+    margin-right: 20%;
+   text-align: center;
+    background: skyblue;
+  }
+
 </style>
    
 </body>
